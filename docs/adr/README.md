@@ -1,8 +1,8 @@
 # Architecture Decision Records
 
 An ADR records one design decision: the context, the options considered, what was chosen, and the
-consequences. It exists so that in three weeks you (or your professor) can see _why_ something is the way
-it is, not just _what_ it is.
+consequences. It exists so that in three weeks you (or your professor) can see *why* something is the way
+it is, not just *what* it is.
 
 ## Rules
 
@@ -14,14 +14,15 @@ it is, not just _what_ it is.
 
 ## Index
 
-| ADR                                                 | Title                                                           | Status   |
-| --------------------------------------------------- | --------------------------------------------------------------- | -------- |
-| [0001](0001-suspended-four-cable-configuration.md)  | Suspended 4-cable configuration with motors at the bottom       | accepted |
-| [0002](0002-corner-cable-attachment.md)             | Cables attach to the platform corners                           | accepted |
-| [0003](0003-frame-2020-cube.md)                     | 2020 aluminium cube frame from 12 × 600 mm bars                 | accepted |
-| [0004](0004-python-for-simulation.md)               | Python (numpy/scipy) for simulation                             | accepted |
-| [0005](0005-stepper-modelled-as-position-source.md) | Model steppers as position sources with a torque check          | accepted |
-| [0006](0006-motion-planning-before-feedback.md)     | Reduce oscillation with motion planning before feedback control | accepted |
-| [0007](0007-electromagnet-gripper.md)               | Electromagnet gripper                                           | proposed |
+| ADR | Title | Status |
+|---|---|---|
+| [0001](0001-suspended-four-cable-configuration.md) | Suspended 4-cable configuration with motors at the bottom | accepted |
+| [0002](0002-corner-cable-attachment.md) | Cables attach to the platform corners | accepted |
+| [0003](0003-frame-2020-cube.md) | 2020 aluminium cube frame from 12 × 600 mm bars | superseded by 0008 |
+| [0004](0004-python-for-simulation.md) | Python (numpy/scipy) for simulation | accepted |
+| [0005](0005-stepper-modelled-as-position-source.md) | Model steppers as position sources with a torque check | accepted |
+| [0006](0006-motion-planning-before-feedback.md) | Reduce oscillation with motion planning before feedback control | accepted |
+| [0007](0007-electromagnet-gripper.md) | Electromagnet gripper | proposed |
+| [0008](0008-adjustable-pulley-height.md) | 2020 frame with adjustable pulley height | accepted |
 
 Template: [0000-template.md](0000-template.md)

@@ -10,20 +10,20 @@ top corners and down to the corners of a platform, which carries a gripper.
 
 ## Status
 
-| Item         | State                                                            |
-| ------------ | ---------------------------------------------------------------- |
-| Requirements | v1 frozen — see [docs/requirements.md](docs/requirements.md)     |
-| Mechanical   | Frame and parts being procured                                   |
-| Simulation   | Planned — see [docs/simulation-plan.md](docs/simulation-plan.md) |
-| Firmware     | Not started; controller board pending approval                   |
+| Item | State |
+|---|---|
+| Requirements | v2 — see [docs/requirements.md](docs/requirements.md); design choices in [docs/design-parameters.md](docs/design-parameters.md) |
+| Mechanical | Frame and parts being procured |
+| Simulation | Planned — see [docs/simulation-plan.md](docs/simulation-plan.md) |
+| Firmware | Not started; controller board pending approval |
 
 ## Key dates
 
-| Date            | Milestone                                                        |
-| --------------- | ---------------------------------------------------------------- |
-| Thu 8 Oct 2026  | Presentation 2 — mechanical build mostly done, first simulations |
-| Thu 29 Oct 2026 | Presentation 3                                                   |
-| Thu 26 Nov 2026 | Final demo and presentation                                      |
+| Date | Milestone |
+|---|---|
+| Thu 8 Oct 2026 | Presentation 2 — mechanical build mostly done, first simulations |
+| Thu 29 Oct 2026 | Presentation 3 |
+| Thu 26 Nov 2026 | Final demo and presentation |
 
 Details in [docs/roadmap.md](docs/roadmap.md).
 
@@ -33,6 +33,7 @@ Details in [docs/roadmap.md](docs/roadmap.md).
 README.md                 You are here
 docs/
   requirements.md         What the robot must do, and how each requirement is tested
+  design-parameters.md    Choices derived from the requirements, each traced to the question that decides it
   questions.md            Open engineering questions — the things we need to find out
   roadmap.md              Milestones, what is due when, and what is deliberately deferred
   architecture.md         The system broken into subsystems, and the interfaces between them

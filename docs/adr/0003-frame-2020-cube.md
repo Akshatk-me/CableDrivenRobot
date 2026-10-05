@@ -1,8 +1,8 @@
 # ADR-0003: 2020 aluminium cube frame from 12 × 600 mm bars
 
-- **Status:** accepted
+- **Status:** superseded by ADR-0008
 - **Date:** 2026-10-05
-- **Related:** R-01, R-14, Q-E1
+- **Related:** D-01, C-01, Q-E1
 
 ## Context
 
@@ -11,11 +11,11 @@ about one day, from parts available in Mumbai, within budget.
 
 ## Options considered
 
-| Option                                        | Pros                                                      | Cons                                          |
-| --------------------------------------------- | --------------------------------------------------------- | --------------------------------------------- |
-| A. 2020 extrusion, L-brackets, drop-in T-nuts | Stiff; adjustable; easy to mount parts anywhere; reusable | Biggest single cost item                      |
-| B. Wood                                       | Cheap; easy to cut                                        | Less stiff and less precise; harder to adjust |
-| C. 3D-printed joints with rods or pipes       | Cheap                                                     | Slow to print; joints flex                    |
+| Option | Pros | Cons |
+|---|---|---|
+| A. 2020 extrusion, L-brackets, drop-in T-nuts | Stiff; adjustable; easy to mount parts anywhere; reusable | Biggest single cost item |
+| B. Wood | Cheap; easy to cut | Less stiff and less precise; harder to adjust |
+| C. 3D-printed joints with rods or pipes | Cheap | Slow to print; joints flex |
 
 ## Decision
 

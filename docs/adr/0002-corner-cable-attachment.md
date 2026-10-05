@@ -2,7 +2,7 @@
 
 - **Status:** accepted
 - **Date:** 2026-10-05
-- **Related:** R-11, Q-A3, Q-E2, Q-E3
+- **Related:** D-09, Q-A3, Q-E2, Q-E3
 
 ## Context
 
@@ -11,14 +11,13 @@ This choice decides whether the platform resists tilting and twisting, and how c
 
 ## Options considered
 
-| Option                             | Pros                                                  | Cons                                                                    |
-| ---------------------------------- | ----------------------------------------------------- | ----------------------------------------------------------------------- |
-| A. All cables to one central point | No cable torques; point-mass model is exact; simplest | Platform free to twist; swings like a pendulum below the point          |
-| B. Cables to the four corners      | Cables resist tilt and twist; steadier platform       | Rigid-body (6-DOF) model needed; small tilt causes small position error |
+| Option | Pros | Cons |
+|---|---|---|
+| A. All cables to one central point | No cable torques; point-mass model is exact; simplest | Platform free to twist; swings like a pendulum below the point |
+| B. Cables to the four corners | Cables resist tilt and twist; steadier platform | Rigid-body (6-DOF) model needed; small tilt causes small position error |
 
 ## Decision
 
-I don't think one central point model holds, there'll always be torque that'll do oscillations, ig it'll be quite reduced though, not sure exactly, intuitively feels better though
 Option B. The payload mass hangs at the centre, below the plane of the attachment points.
 
 ## Consequences
@@ -29,4 +28,4 @@ Option B. The payload mass hangs at the centre, below the plane of the attachmen
 - Making the attachment rectangle the same shape as the pulley rectangle should keep the platform level
   at the workspace centre (check in Q-A3).
 - Hanging the payload below the attachment plane adds gravity's restoring effect on tilt (Q-E3).
-- Wrong if: measured tilt or twist exceeds R-11, or the extra model complexity blocks M2.
+- Wrong if: measured tilt or twist exceeds D-09, or the extra model complexity blocks M2.

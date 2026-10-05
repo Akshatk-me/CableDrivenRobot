@@ -36,13 +36,13 @@ its own. When something goes wrong, the interface tells you which side to look a
 
 ## Interfaces
 
-| From → To          | Interface                                          | Contract                                                |
-| ------------------ | -------------------------------------------------- | ------------------------------------------------------- |
-| Task → Planner     | Target point, gripper command                      | Targets must lie inside the verified workspace (`Q-A1`) |
-| Planner → IK       | Platform position p(t) sampled at the control rate | Respects max velocity and acceleration from `Q-B2`      |
-| IK → Drivers       | Step counts per motor                              | Steps per mm from `EXP-02`; never exceeds max step rate |
-| Motors → Plant     | Spool torque and angle                             | Required torque ≤ 70% of available torque (R-12)        |
-| Firmware → Gripper | Digital pin                                        | On/off; release delay to be measured                    |
+| From → To | Interface | Contract |
+|---|---|---|
+| Task → Planner | Target point, gripper command | Targets must lie inside the verified workspace (`Q-A1`) |
+| Planner → IK | Platform position p(t) sampled at the control rate | Respects max velocity and acceleration from `Q-B2` |
+| IK → Drivers | Step counts per motor | Steps per mm from `EXP-02`; never exceeds max step rate |
+| Motors → Plant | Spool torque and angle | Required torque ≤ 70% of available torque (D-10) |
+| Firmware → Gripper | Digital pin | On/off; release delay to be measured |
 
 ## Coordinate frame
 

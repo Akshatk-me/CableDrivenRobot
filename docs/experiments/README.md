@@ -1,18 +1,18 @@
 # Experiments
 
 One file per experiment, named `EXP-NN-short-title.md`, using [the template](EXP-00-template.md).
-Every experiment states a hypothesis _before_ it's run. Raw data (CSV, photos, video frames) goes in
+Every experiment states a hypothesis *before* it's run. Raw data (CSV, photos, video frames) goes in
 `docs/experiments/data/EXP-NN/`.
 
 ## Planned
 
-| ID     | Title                                        | Answers                     | Milestone | Status  |
-| ------ | -------------------------------------------- | --------------------------- | --------- | ------- |
-| EXP-01 | Cable stretch test                           | Q-F1 (cable stiffness EA)   | M1        | planned |
-| EXP-02 | Spool calibration                            | Steps per mm for each motor | M1        | planned |
-| EXP-03 | Positioning accuracy                         | R-05, R-06                  | M2        | planned |
-| EXP-04 | Settling after a move (slow-motion video)    | R-08, Q-F2, Q-F3            | M2        | planned |
-| EXP-05 | Electromagnet holding force and release time | ADR-0007                    | M2        | planned |
+| ID | Title | Answers | Milestone | Status |
+|---|---|---|---|---|
+| EXP-01 | Cable stretch test | Q-F1 (cable stiffness EA) | M1 | planned |
+| EXP-02 | Spool calibration | Steps per mm for each motor | M1 | planned |
+| EXP-03 | Positioning accuracy | R-05, D-08 | M2 | planned |
+| EXP-04 | Settling after a move (slow-motion video) | D-07, Q-F2, Q-F3 | M2 | planned |
+| EXP-05 | Electromagnet holding force and release time | ADR-0007 | M2 | planned |
 
 ## EXP-01 outline: cable stretch
 

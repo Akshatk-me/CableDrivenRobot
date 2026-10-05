@@ -2,7 +2,7 @@
 
 - **Status:** proposed
 - **Date:** 2026-10-05
-- **Related:** R-03, R-04, R-10
+- **Related:** R-03, R-04, R-07
 
 ## Context
 
@@ -12,11 +12,11 @@ particular orientation.
 
 ## Options considered
 
-| Option                                                   | Pros                                                                      | Cons                                                           |
-| -------------------------------------------------------- | ------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Option | Pros | Cons |
+|---|---|---|
 | A. 12 V electromagnet; steel washer glued to each object | Cheap; one digital output; insensitive to twist and small position errors | Objects must carry steel; residual magnetism may delay release |
-| B. Small servo claw                                      | Handles plain objects                                                     | Heavier; sensitive to orientation and position error           |
-| C. Suction cup with pump                                 | Handles flat objects                                                      | Pump cost and weight; tubing to a moving platform              |
+| B. Small servo claw | Handles plain objects | Heavier; sensitive to orientation and position error |
+| C. Suction cup with pump | Handles flat objects | Pump cost and weight; tubing to a moving platform |
 
 ## Decision
 

@@ -1,56 +1,53 @@
-# Requirements (v1)
+# Requirements (v2)
 
-**Status:** frozen for presentation 2. Changes go through an ADR and bump the version.
+Requirements say **what** the robot must do and the limits it must live within, never **how**.
+Anything that is a choice we make to satisfy these (frame size, speed, settling time, tilt limits, gripper type)
+is a design parameter, derived and tracked in [design-parameters.md](design-parameters.md).
+
+Test for any line here: *could a different, valid design satisfy it?* If the line only makes sense for one
+particular design, it belongs in design parameters or an ADR, not here.
 
 ## Problem statement
 
-Build a cable-driven parallel robot that automatically picks small rigid objects from known positions and
-places them at other known positions, within a budget of ₹5,000 plus components available in the lab.
+Automatically move small rigid objects from known pick locations to known place locations using a
+cable-driven parallel robot, within ₹5,000 plus components available in the lab.
 
 ## Objectives
 
-1. Demonstrate repeatable, automatic pick-and-place with a 4-cable suspended CDPR.
-2. Characterise the robot's workspace, accuracy, speed and oscillation through simulation **and** experiment,
-   and show the two agree.
-3. Reduce platform oscillation using motion planning (trajectory shaping), without feedback sensors.
+1. Demonstrate repeatable, automatic pick-and-place with a cable-driven parallel robot.
+2. Show that simulation predicts the robot's behaviour, by comparing it with experiments.
 
-## Scope
+## Functional and performance requirements
 
-**In scope:** 3-axis position control (x, y, z) of the platform; pre-programmed pick and place coordinates;
-an electromagnet gripper; open-loop stepper control.
-
-**Out of scope (v1):** controlling platform orientation; vision; feedback control from platform sensors;
-grasping arbitrary objects.
-
-## Requirements
-
-"Target" must be met at the final demo. "Stretch" is attempted only after all targets are met.
-
-| ID   | Requirement                            | Target                                                            | Stretch            | Verification                                                                  |
-| ---- | -------------------------------------- | ----------------------------------------------------------------- | ------------------ | ----------------------------------------------------------------------------- |
-| R-01 | Frame size                             | 640 × 640 × 600 mm (12 × 600 mm 2020 bars)                        | —                  | Measure                                                                       |
-| R-02 | Usable workspace, all cables taut      | 350 × 350 mm footprint, 200 mm vertical travel                    | 450 × 450 × 300 mm | Command workspace corners; check every cable stays taut. Predicted by `Q-A1`. |
-| R-03 | Payload (object only)                  | 100 g                                                             | 250 g              | Calibrated weights                                                            |
-| R-04 | Objects                                | 40 mm rigid blocks with a steel washer on top, at known positions | Mixed sizes        | 3D-printed test set                                                           |
-| R-05 | Position accuracy                      | ±5 mm                                                             | ±2 mm              | Command a point, measure landing on graph paper (`EXP-03`)                    |
-| R-06 | Repeatability                          | ±2 mm                                                             | ±1 mm              | Return to one point 10×, measure spread                                       |
-| R-07 | Max platform speed                     | 100 mm/s                                                          | 250 mm/s           | Time a known distance                                                         |
-| R-08 | Settling time after a move             | Swing below ±3 mm within 1.5 s                                    | 0.5 s              | Slow-motion video against a ruler. Predicted by `Q-C2`.                       |
-| R-09 | Pick-and-place cycle                   | ≤ 15 s for a 300 mm move                                          | ≤ 8 s              | Stopwatch, mean of 10 cycles                                                  |
-| R-10 | Success rate                           | 9 of 10                                                           | 19 of 20           | Count                                                                         |
-| R-11 | Platform tilt / twist during operation | Tilt ≤ 5°, twist ≤ 15°                                            | —                  | Phone level app; predicted by `Q-A3`                                          |
-| R-12 | No lost steps in normal operation      | Required torque ≤ 70% of available torque at all times            | —                  | Predicted by `Q-B3`; checked by returning home after 20 cycles                |
-| R-13 | Safety                                 | Emergency stop cuts motor power; cables never whip if one snaps   | —                  | Inspection, E-stop test                                                       |
-| R-14 | Budget                                 | ≤ ₹5,000 purchased, all with GST bills                            | —                  | `hardware/bom.md` total                                                       |
+| ID | Requirement | Target | Stretch | Verification |
+|---|---|---|---|---|
+| R-01 | Work area: region on the work surface where objects can be picked and placed | 350 × 350 mm | 450 × 450 mm | Pick and place at the four corners and centre |
+| R-02 | Lift: objects carried clear of the work surface | ≥ 100 mm above the surface | — | Measure during a move |
+| R-03 | Payload | 100 g | 250 g | Calibrated weights |
+| R-04 | Objects | Rigid, fits within a 50 mm cube | — | Test object set |
+| R-05 | Placement accuracy: object centre vs commanded place location | ±5 mm | ±2 mm | Graph paper, 10 placements |
+| R-06 | Cycle time: pick, move 300 mm, place | ≤ 15 s | ≤ 8 s | Stopwatch, mean of 10 cycles |
+| R-07 | Reliability: successful automatic cycles | 9 of 10 | 19 of 20 | Count |
+| R-08 | Safety | Emergency stop removes motor power; a cable failure does not endanger people | — | E-stop test, inspection |
 
 ## Constraints
 
-- Controller: TIVA (TM4C123) by default; any other board needs the professor's prior approval.
-- Motors: NEMA 17 from the lab (model and torque to be confirmed — see `sim/params.yaml`).
-- All purchases need a GST bill with the professor's name and department address, plus proof of payment.
+Fixed by the course, not chosen by us.
+
+| ID | Constraint |
+|---|---|
+| C-01 | Purchases ≤ ₹5,000, each with a GST bill (professor's name, department address) and proof of payment |
+| C-02 | Controller: TIVA (TM4C123), or another board with the professor's prior approval |
+| C-03 | Actuators: NEMA 17 steppers available in the lab |
+| C-04 | Dates: presentation 2 on 8 Oct, presentation 3 on 29 Oct, final demo on 26 Nov 2026 |
+
+## Out of scope (v2)
+
+Controlling platform orientation, vision, arbitrary object shapes.
 
 ## Changelog
 
-| Version | Date       | Change             |
-| ------- | ---------- | ------------------ |
-| v1      | 2026-10-05 | Initial frozen set |
+| Version | Date | Change |
+|---|---|---|
+| v1 | 2026-10-05 | Initial set |
+| v2 | 2026-10-05 | Stripped to needs and constraints. Frame size, speed, settling, repeatability, tilt and torque margin moved to design parameters. Work area redefined as the area on the work surface, not a 3D volume. |

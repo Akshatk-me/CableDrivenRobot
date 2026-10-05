@@ -9,101 +9,63 @@
 #     Cables numbered 1–4 counter-clockwise from the (−x, −y) corner, viewed from above.
 
 frame:
-  outer_size:
-    {
-      value: [0.640, 0.640, 0.600],
-      unit: m,
-      source: design,
-      note: "ADR-0003; W x D x H",
-    }
+  outer_size:     {value: [0.640, 0.640, 0.600], unit: m, source: design, note: "ADR-0008; W x D x H; provisional (D-01)"}
   # Cable exit point on each top pulley, A_i. Approximate until the pulley mounts are designed.
   pulley_exit_points:
     value:
       - [-0.290, -0.290, 0.570]
-      - [0.290, -0.290, 0.570]
-      - [0.290, 0.290, 0.570]
-      - [-0.290, 0.290, 0.570]
+      - [ 0.290, -0.290, 0.570]
+      - [ 0.290,  0.290, 0.570]
+      - [-0.290,  0.290, 0.570]
     unit: m
     source: assumed
     replace_by: "Measure after pulley mounts are fitted"
+    note: "z is the adjustable pulley height (D-02, ADR-0008); Q-E1 sweeps it from ~0.30 to 0.57 m"
 
 platform:
   # Cable attachment points b_i, in the platform's own frame (origin at platform centre).
   attachment_points:
     value:
       - [-0.050, -0.050, 0.0]
-      - [0.050, -0.050, 0.0]
-      - [0.050, 0.050, 0.0]
-      - [-0.050, 0.050, 0.0]
+      - [ 0.050, -0.050, 0.0]
+      - [ 0.050,  0.050, 0.0]
+      - [-0.050,  0.050, 0.0]
     unit: m
     source: design
     note: "ADR-0002; 100 x 100 mm platform"
-  mass:
-    {
-      value: 0.080,
-      unit: kg,
-      source: assumed,
-      replace_by: "Weigh the built platform",
-    }
-  inertia_note: "Computed in code from platform size and mass (thin plate) plus point masses below."
+  mass:           {value: 0.080, unit: kg, source: assumed, replace_by: "Weigh the built platform"}
+  inertia_note:   "Computed in code from platform size and mass (thin plate) plus point masses below."
 
 gripper:
-  mass:
-    {
-      value: 0.100,
-      unit: kg,
-      source: assumed,
-      replace_by: "Weigh the electromagnet + mount",
-    }
-  drop_below_platform:
-    { value: 0.030, unit: m, source: assumed, note: "Q-E3 sweeps this" }
+  mass:           {value: 0.100, unit: kg, source: assumed, replace_by: "Weigh the electromagnet + mount"}
+  drop_below_platform: {value: 0.030, unit: m, source: assumed, note: "Q-E3 sweeps this"}
 
 payload:
-  mass: { value: 0.100, unit: kg, source: design, note: "R-03 target" }
-  mass_stretch: { value: 0.250, unit: kg, source: design, note: "R-03 stretch" }
+  mass:           {value: 0.100, unit: kg, source: design, note: "R-03 target"}
+  mass_stretch:   {value: 0.250, unit: kg, source: design, note: "R-03 stretch"}
 
 cable:
-  type: "Braided PE fishing line, 0.3–0.5 mm"
-  axial_stiffness_EA:
-    { value: 3000.0, unit: N, source: assumed, replace_by: "EXP-01 (Q-F1)" }
-  damping_ratio:
-    { value: 0.02, unit: "-", source: assumed, replace_by: "EXP-04 (Q-F2)" }
-  min_tension:
-    {
-      value: 0.5,
-      unit: N,
-      source: design,
-      note: "Below this a cable counts as slack (Q-A1)",
-    }
+  type:           "Braided PE fishing line, 0.3–0.5 mm"
+  axial_stiffness_EA: {value: 3000.0, unit: N, source: assumed, replace_by: "EXP-01 (Q-F1)"}
+  damping_ratio:  {value: 0.02, unit: "-", source: assumed, replace_by: "EXP-04 (Q-F2)"}
+  min_tension:    {value: 0.5, unit: N, source: design, note: "Below this a cable counts as slack (Q-A1)"}
 
 spool:
-  radius: { value: 0.010, unit: m, source: design, note: "Q-E4 sweeps this" }
+  radius:         {value: 0.010, unit: m, source: design, note: "Q-E4 sweeps this"}
 
 motor:
-  model:
-    {
-      value: "TBD",
-      source: assumed,
-      replace_by: "Read lab motor label, find datasheet",
-    }
-  holding_torque:
-    { value: 0.40, unit: "N·m", source: assumed, note: "Typical 48 mm NEMA 17" }
-  rotor_inertia: { value: 5.4e-6, unit: "kg·m²", source: assumed }
-  full_steps_per_rev: { value: 200, unit: "-", source: datasheet }
-  microsteps: { value: 16, unit: "-", source: design }
+  model:          {value: "TBD", source: assumed, replace_by: "Read lab motor label, find datasheet"}
+  holding_torque: {value: 0.40, unit: "N·m", source: assumed, note: "Typical 48 mm NEMA 17"}
+  rotor_inertia:  {value: 5.4e-6, unit: "kg·m²", source: assumed}
+  full_steps_per_rev: {value: 200, unit: "-", source: datasheet}
+  microsteps:     {value: 16, unit: "-", source: design}
   # Available torque vs shaft speed. Typical shape only — replace with the real motor's pull-out curve.
   torque_speed_curve:
-    speed_rpm: [0, 100, 300, 600, 900, 1200]
-    torque_Nm: [0.40, 0.36, 0.28, 0.18, 0.11, 0.06]
+    speed_rpm:    [0,    100,  300,  600,  900,  1200]
+    torque_Nm:    [0.40, 0.36, 0.28, 0.18, 0.11, 0.06]
     source: assumed
     replace_by: "Lab motor datasheet at our supply voltage and driver current"
-  torque_margin:
-    {
-      value: 0.70,
-      unit: "-",
-      source: design,
-      note: "R-12: required ≤ 70% of available",
-    }
+  torque_margin:  {value: 0.70, unit: "-", source: design, note: "D-10: required ≤ 70% of available"}
 
 environment:
-  g: { value: 9.81, unit: "m/s²", source: design }
+  g:              {value: 9.81, unit: "m/s²", source: design}
