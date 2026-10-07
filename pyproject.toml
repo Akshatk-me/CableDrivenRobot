@@ -8,8 +8,11 @@ authors = [
 ]
 requires-python = ">=3.14"
 dependencies = [
+    "jupyter>=1.1.1",
     "matplotlib>=3.11.1",
     "numpy>=2.5.2",
+    "pytest>=9.1.1",
+    "pyyaml>=6.0.3",
     "scipy>=1.18.1",
 ]
 
@@ -19,3 +22,7 @@ mechatronicsystemdesign = "mechatronicsystemdesign:main"
 [build-system]
 requires = ["uv_build>=0.12.5,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+pythonpath = ["sim"]
+testpaths = ["sim/tests"]

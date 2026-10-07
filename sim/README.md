@@ -7,7 +7,6 @@ See [docs/simulation-plan.md](../docs/simulation-plan.md) for the model layers, 
 ```
 sim/
   params.yaml          All physical parameters, with sources. Edit numbers here, never in code.
-  requirements.txt     Python dependencies
   cdpr/                Model code, built up layer by layer
     params.py          Loads params.yaml
     kinematics.py      L0: cable lengths from platform pose
@@ -18,10 +17,16 @@ sim/
   tests/               Sanity checks with known answers (symmetry, hand calculations)
 ```
 
-## Setup
+## Setup (uv)
+
+Dependencies are declared in `pyproject.toml` at the repo root and pinned in `uv.lock`.
 
 ```bash
-pip install -r requirements.txt
+uv sync                                              # create .venv and install exact locked versions
+uv run pytest                                        # sanity tests — run before trusting any result
+uv run python sim/notebooks/01_statics_workspace.py  # writes plots to sim/results/
 ```
 
-Or open a notebook in Google Colab and run `!pip install -r requirements.txt` in the first cell.
+Add a dependency with `uv add <package>`; never edit the lock file by hand.
+Plots in `sim/results/` are generated, so they're git-ignored: re-run the script to get them.
+The `# %%` markers in each notebook script make it runnable cell-by-cell in VS Code or Jupyter.
